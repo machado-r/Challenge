@@ -8,9 +8,17 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "16.5.0",
     "@babel/runtime": "^7.0.0",
-    "react-native": "0.57.1"
+    "apollo-boost": "^0.1.16",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.0",
+    "react": "16.5.0",
+    "react-apollo": "^2.2.4",
+    "react-native": "0.57.1",
+    "react-navigation": "^2.18.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",

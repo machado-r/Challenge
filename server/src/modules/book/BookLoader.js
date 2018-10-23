@@ -1,20 +1,19 @@
-export const loadAllBooks = (root, args, context) => {
-  const books = [
-    {
-      title: 'Harry Potter and the Chamber of Secrets',
-      author: {
-        name: 'JKR',
-        age: 98,
-      },
-    },
-    {
-      title: 'Jurassic Park',
-      author: {
-        name: 'Michael Crichton',
-        age: 33,
-      },
-    },
-  ];
+import Book from './BookModel';
 
-  return books;
+const ObjectId = require('mongoose').Types.ObjectId;
+ObjectId.prototype.valueOf = function () {
+  return this.toString();
 };
+
+const loadAllBooks = (root, args, context) => {
+  return Book.find().populate('author');
+};
+
+const addBook = (root, args, context) => {
+  return Book.create(args);
+}
+
+export {
+  loadAllBooks,
+  addBook,
+}
