@@ -24,7 +24,7 @@ class SearchResult extends Component {
           <CardSection>
             <Button
               title="Return to list"
-              onPress={ () => this.props.navigation.navigate('BookList') }
+              onPress={() => this.props.navigation.replace('BookList')}
             />
           </CardSection>
         </Card>

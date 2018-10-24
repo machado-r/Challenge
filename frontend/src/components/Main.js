@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
-import { Button } from 'react-native';
-import { Card, CardSection, Input, Spinner } from './common';
+import { Button, Image } from 'react-native';
+import { Card, CardSection } from './common';
 
 /*the main component when user is logged in*/
 class Main extends Component {
   static navigationOptions = {
-    title: 'Book Store',
+    title: 'Foton Book Store',
   };
 
   render() {
     return (
       <Card>
+        <CardSection style={{backgroundColor: '#942193', alignItems: 'center', flexDirection: 'row'}}>
+          <Image
+            style={ { flex: 1 } }
+            resizeMode="center"
+            source={ require('../img/logo.png') }
+          />
+        </CardSection>
         <CardSection>
           <Button
             title="Create Book"
@@ -29,6 +36,5 @@ class Main extends Component {
     )
   }
 }
-
 
 export default Main;

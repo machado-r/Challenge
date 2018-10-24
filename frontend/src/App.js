@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {StatusBar} from 'react-native';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import Navigator from './Navigator';
@@ -16,10 +17,15 @@ class App extends Component {
   render () {
     return (
       <ApolloProvider client={ client }>
+        <StatusBar
+          backgroundColor="#942193"
+          barStyle="light-content"
+        />
         <Navigator />
       </ApolloProvider>
     );
   }
 }
+
 
 export default App;

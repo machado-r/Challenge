@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, Button, View } from 'react-native';
+import { Text, Button } from 'react-native';
 import { withApollo } from 'react-apollo';
 import { checkUserQuery } from '../queries/queries';
 import { Card, CardSection, Input, Spinner } from './common';

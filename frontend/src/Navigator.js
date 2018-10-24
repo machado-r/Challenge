@@ -30,8 +30,8 @@ const Navigator = StackNavigator({
   Login: LoginStack,
   BookStore: MainStack,
 }, {
-  initialRouteName: 'BookStore',
-  headerMode: 'none'
+  initialRouteName: 'Login',
+  headerMode: 'none',
 });
 
 export default Navigator;
