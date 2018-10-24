@@ -14,7 +14,7 @@ class Main extends Component {
         <CardSection style={{backgroundColor: '#942193', alignItems: 'center', flexDirection: 'row'}}>
           <Image
             style={ { flex: 1 } }
-            resizeMode="center"
+            resizeMode="contain"
             source={ require('../img/logo.png') }
           />
         </CardSection>

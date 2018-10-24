@@ -8,7 +8,7 @@
 4. cd server and run `nodemon`
 5. cd frontend and run `react-native run-ios`, or react-native `run-android`
 
-There is no need to setup a local MongoDB, the database is handled wirh mlab cloud.
+There is no need to setup a local MongoDB, the database is handled with mlab cloud.
 
 
 #### implementation by Rodrigo Machado (rodrigo.krv@gmail.com)
