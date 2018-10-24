@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from "react-native";
-import { Card, CardSection, Input, Spinner } from './common';
+import { Button, Keyboard } from "react-native";
+import { CardSection, Input } from './common';
 
 /*handles the search on BookList*/
 class Search extends Component {
@@ -16,7 +16,9 @@ class Search extends Component {
   renderSearch() {
     books = this.props.books;
     book = books.find(book => book.title.toLowerCase() === this.state.searchTerm.toLowerCase());
-    this.props.handleSearch(book);
+    this.props.handleSearch(book, this.state.searchTerm);
+    this.setState({ searchTerm: '' });
+    Keyboard.dismiss();
   }
 
   render() {

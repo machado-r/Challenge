@@ -31,7 +31,7 @@ class LoginForm extends Component {
       },
     }).then(result => {     
         if (result.data.checkUser) {
-          this.props.navigation.navigate('Main');
+          this.props.navigation.navigate('BookStore');
         } else {
           this.setState({
             email: '',

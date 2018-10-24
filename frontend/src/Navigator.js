@@ -28,9 +28,10 @@ const MainStack = createStackNavigator({
 
 const Navigator = StackNavigator({
   Login: LoginStack,
-  Main: MainStack,
+  BookStore: MainStack,
 }, {
-    headerMode: 'none'
+  initialRouteName: 'BookStore',
+  headerMode: 'none'
 });
 
 export default Navigator;

@@ -5,6 +5,7 @@ import { booksQuery } from '../queries/queries';
 import { Card, CardSection } from './common';
 import BookListInfo from './BookListInfo';
 import Search from './Search';
+import SearchResult from './SearchResult';
 
 /*handles the list of all books on record*/
 class BookList extends Component {
@@ -13,6 +14,7 @@ class BookList extends Component {
     this.state = {
       book: null,
       error: false,
+      searchTerm: '',
     };
 
     this.handleSearch = this.handleSearch.bind(this);
@@ -34,12 +36,15 @@ class BookList extends Component {
       /*handles search not found*/
       return (
         <CardSection>
+          <Text style={{fontWeight: 'bold', alignSelf: 'center'}}>
+            Nothing found for {this.state.searchTerm}
+          </Text>
           <Text style={{marginBottom: 60}}>
-            Nothing found. Try the full book's name. The search is case insensitive.
+            Try the full book's name. The search is case insensitive.
           </Text>
           <Button
             title="See full list"
-            onPress={() =>this.setState({error: false})}
+            onPress={() =>this.setState({error: false, book: null})}
           />
         </CardSection>
       )
@@ -48,20 +53,7 @@ class BookList extends Component {
       /*if search is good, show result*/
       var book = this.state.book;
       return (
-        <TouchableOpacity
-          key={ book.title }
-          onPress={ () => this.props.navigation.navigate('BookDetail', { book }) }
-        >
-          <BookListInfo book={ book } />
-          <Card>
-            <CardSection>
-              <Button
-                title="Return to list"
-                onPress={ () => this.setState({ book: null }) }
-              />
-            </CardSection>
-          </Card>
-        </TouchableOpacity>
+        <SearchResult book={ book } searchTerm={ this.state.searchTerm } />
       )
     } else {
       /*show the full list of books*/
@@ -69,10 +61,10 @@ class BookList extends Component {
       if (data.loading) {
         return (<Text>Loading list...</Text>);
       } else {
-        return data.books.map(book => {
+        return data.books.map(book => {          
           return (
             <TouchableOpacity
-              key={ book.title }
+              key={ book._id }
               onPress={ () => this.props.navigation.navigate('BookDetail', { book }) }>
               <BookListInfo
                 book={ book }
@@ -84,20 +76,20 @@ class BookList extends Component {
     }
   }
 
-  handleSearch(book) {
+  handleSearch(book, searchTerm) {
     if (book) {
-      this.setState({ book });    
+      this.setState({ book, error: false, searchTerm });    
     } else {
-      this.setState({ error: true });
+      this.setState({ book: null, error: true, searchTerm });
     }
   }
-  
+
   render() {
     return (
       <View style={{flex: 1}}>
         <Search
           books={ this.props.booksQuery.books }
-          handleSearch = {this.handleSearch}
+          handleSearch = { this.handleSearch }
         />
         <ScrollView >
           { this.renderBooks() }

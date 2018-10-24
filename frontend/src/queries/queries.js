@@ -13,6 +13,7 @@ const getAuthorsQuery = gql`
 const booksQuery = gql`
   {
     books{
+      _id
       title
       price
       author {
